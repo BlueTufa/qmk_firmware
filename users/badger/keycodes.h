@@ -30,6 +30,9 @@
 /* IntelliJ / JetBrains shortcuts */
 #define IJ_BACK    LGUI(LALT(KC_LEFT))
 #define IJ_FWD     LGUI(LALT(KC_RIGHT))
+#define IJ_IMPL    LGUI(LALT(KC_B))
+#define IJ_DECL    LGUI(KC_B)
+#define IJ_USAG    LALT(KC_F7)
 
 /* MacOS virtual desktop shortcuts */
 #define M_VD1      LCTL(KC_1)
@@ -49,5 +52,19 @@
 
 #define DF_1       DF(_QWERTY)
 #define DF_2       DF(_QWERTY_MAC)
+
+/* audio support */
+#define MAC_LAYER_SONG    H__NOTE(_E5),  H__NOTE(_A5),  Q__NOTE(_D6),   Q__NOTE(_G6), \
+        ED_NOTE(_E7),     E__NOTE(_CS7), E__NOTE(_E6),  E__NOTE(_A6),   M__NOTE(_CS7, 20),
+#define LONG_AG_SWAP      Q__NOTE(_G5),  Q__NOTE(_D6),  Q__NOTE(_A6),   Q__NOTE(_E7), \
+        SD_NOTE(_B5),     SD_NOTE(_A5),  SD_NOTE(_B5),  SD_NOTE(_A5),
+#define LONG_AG_NORM      Q__NOTE(_DS4), Q__NOTE(_DS4), B__NOTE(_C5),
+#define MOVE_LAYER_SONG   E__NOTE(_GS6), E__NOTE(_A6),  S__NOTE(_REST), ED_NOTE(_E7), \
+        S__NOTE(_REST),   ED_NOTE(_GS7),
+#define RAISE_LAYER_SONG  W__NOTE(_BF5), Q__NOTE(_A5),  W__NOTE(_BF5),  Q__NOTE(_A5),  W__NOTE(_E6), Q__NOTE(_B5),
+#define LOWER_LAYER_SONG  Q__NOTE(_DS4), E__NOTE(_DS4), E__NOTE(_DS6),  Q__NOTE(_DS5), \
+        E__NOTE(_DS5),    E__NOTE(_DS6), Q__NOTE(_E5),  E__NOTE(_E5),   E__NOTE(_DS6), Q__NOTE(_DS5),
+#define CAPS_ON           W__NOTE(_E5),  Q__NOTE(_BF5), W__NOTE(_E5),   Q__NOTE(_BF5), W__NOTE(_E5), Q__NOTE(_BF5),
+#define CAPS_OFF          W__NOTE(_E5),  Q__NOTE(_BF5),
 
 #endif

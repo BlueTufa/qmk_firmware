@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "keycodes.h"
+#include <print.h>
 
 enum Layers {
   _QWERTY = 0,
@@ -25,21 +26,6 @@ const int _layerCount = 7;
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
 
-#define QWERTY_LAYER_SONG H__NOTE(_BF5), H__NOTE(_C6), H__NOTE(_DF6), H__NOTE(_A5), \
-        H__NOTE(_BF5), H__NOTE(_GF5), W__NOTE(_F5), W__NOTE(_F5), W__NOTE(_F5),
-#define MAC_LAYER_SONG H__NOTE(_E5), H__NOTE(_A5), Q__NOTE(_D6), Q__NOTE(_G6), \
-        ED_NOTE(_E7), E__NOTE(_CS7), E__NOTE(_E6), E__NOTE(_A6), M__NOTE(_CS7, 20),
-#define LONG_AG_SWAP Q__NOTE(_G5), Q__NOTE(_D6), Q__NOTE(_A6), Q__NOTE(_E7), \
-        SD_NOTE(_B5), SD_NOTE(_A5), SD_NOTE(_B5), SD_NOTE(_A5),
-#define LONG_AG_NORM  Q__NOTE(_DS4),  Q__NOTE(_DS4), B__NOTE(_C5),
-#define MOVE_LAYER_SONG E__NOTE(_GS6), E__NOTE(_A6), S__NOTE(_REST), ED_NOTE(_E7), \
-        S__NOTE(_REST), ED_NOTE(_GS7),
-#define RAISE_LAYER_SONG W__NOTE(_BF5), Q__NOTE(_A5), W__NOTE(_BF5), Q__NOTE(_A5), W__NOTE(_E6), Q__NOTE(_B5),
-#define LOWER_LAYER_SONG Q__NOTE(_DS4), E__NOTE(_DS4), E__NOTE(_DS6), Q__NOTE(_DS5), \
-        E__NOTE(_DS5), E__NOTE(_DS6), Q__NOTE(_E5), E__NOTE(_E5), E__NOTE(_DS6), Q__NOTE(_DS5),
-#define CAPS_ON  W__NOTE(_E5), Q__NOTE(_BF5), W__NOTE(_E5), Q__NOTE(_BF5), W__NOTE(_E5), Q__NOTE(_BF5),
-#define CAPS_OFF W__NOTE(_E5), Q__NOTE(_BF5),
-
 void playSongForLayer(int currentLayer);
 
 float capsOnSong[][2]                  = SONG(CAPS_ON);
@@ -49,7 +35,6 @@ float moveLayerSong[][2]               = SONG(MOVE_LAYER_SONG);
 float macLayerSong[][2]                = SONG(MAC_LAYER_SONG);
 float raiseLayerSong[][2]              = SONG(RAISE_LAYER_SONG);
 float lowerLayerSong[][2]              = SONG(LOWER_LAYER_SONG);
-// float adjustLayerSong[][2]             = SONG(ADJUST_LAYER_SONG);
 float agSwapSong[][2]                  = SONG(LONG_AG_SWAP);
 float agNormSong[][2]                  = SONG(LONG_AG_NORM);
 
@@ -111,22 +96,17 @@ void keyboard_post_init_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  dprintf("Key event recorded. KEYCODE: %u , event: %u\n", keycode, record->event.pressed);
   switch (keycode) {
     case KC_CAPS:
       if (record->event.pressed) {
+
+        dprintf("CAPS_LOCK state: %u\n", _capsLockState);
         _capsLockState = !_capsLockState;
         _capsLockState ? PLAY_SONG(capsOnSong) : PLAY_SONG(capsOffSong);
         return true;
       }
       break;
-    // case DF(_QWERTY):
-    //   playSongForLayer(_QWERTY);
-    //   return true;
-    //   break;
-    // case DF(_QWERTY_MAC):
-    //   playSongForLayer(_QWERTY_MAC);
-    //   return true;
-    //   break;
     case AG_SWAP:
       PLAY_SONG(agSwapSong);
       return true;
@@ -149,17 +129,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_LYRC:
     if (record->event.pressed) {
+      dprintf("LYR CYCLE pressed %u, CURRENT_LAYER: %u\n", keycode, _currentLayer);
       // don't turn off the QWERTY layer
       if (_currentLayer != _QWERTY) {
         layer_off(_currentLayer);
       }
-      // don't lock the adjust layer
+      // don't lock the ADJUST layer
+      // since this is accessible via the ADJUST
+      // layer, that will require tricky state management
       if (++_currentLayer == _ADJUST) {
         _currentLayer = _QWERTY;
       }
       layer_on(_currentLayer);
       playSongForLayer(_currentLayer);
-      return true;
+      return false;
     }
     break;
   }
@@ -186,8 +169,7 @@ void playSongForLayer(int currentLayer) {
     case  _LOWER:
       PLAY_SONG(lowerLayerSong);
       break;
-    case  _ADJUST:
-      // PLAY_SONG(adjustLayerSong);
+    default:
       break;
   }
 }
