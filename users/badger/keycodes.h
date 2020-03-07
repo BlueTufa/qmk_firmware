@@ -11,6 +11,8 @@
 #define MAC_POP    LCTL(KC_UP)
 #define OS_COPY    LSFT(LCTL(KC_C))
 #define OS_PAST    LSFT(LCTL(KC_V))
+#define MAC_PST    LGUI(KC_V)
+#define MAC_CPY    LGUI(KC_C)
 
 #define WD_BACK    LALT(KC_LEFT)
 #define WD_FRWD    LALT(KC_RIGHT)
