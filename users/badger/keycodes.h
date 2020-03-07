@@ -12,6 +12,9 @@
 #define OS_COPY    LSFT(LCTL(KC_C))
 #define OS_PAST    LSFT(LCTL(KC_V))
 
+#define WD_BACK    LALT(KC_LEFT)
+#define WD_FRWD    LALT(KC_RIGHT)
+
 #define VD_1       LCTL(KC_F1)
 #define VD_2       LCTL(KC_F2)
 #define VD_3       LCTL(KC_F3)
@@ -22,6 +25,12 @@
 #define WM_RH      LGUI(KC_RIGHT)
 #define WM_MAX     LGUI(KC_PGUP)
 
+#define CS_RIGHT   LCTL(LSFT(KC_9))
+#define CS_DOWN    LCTL(LSFT(KC_0))
+
+#define CM_RIGHT   LGUI(KC_D)
+#define CM_DOWN    LGUI(LSFT(KC_D))
+
 /* THESE are not defaults in KDE and must be set manually */
 #define WM_VD1     HYPR(KC_1)
 #define WM_VD2     HYPR(KC_2)
@@ -30,9 +39,17 @@
 /* IntelliJ / JetBrains shortcuts */
 #define IJ_BACK    LGUI(LALT(KC_LEFT))
 #define IJ_FWD     LGUI(LALT(KC_RIGHT))
+#define IJ_UP      LGUI(LALT(KC_UP))
+#define IJ_DOWN    LGUI(LALT(KC_DOWN))
 #define IJ_IMPL    LGUI(LALT(KC_B))
 #define IJ_DECL    LGUI(KC_B)
+#define IJ_REN     LSFT(KC_F6)
 #define IJ_USAG    LALT(KC_F7)
+#define IJ_RUN     KC_F9
+#define IJ_STEP    KC_F8
+#define IJ_INTO    LSFT(KC_F7)
+#define IJ_OUT     LSFT(KC_F8) 
+#define IJ_STOP    LGUI(KC_F2) 
 
 /* MacOS virtual desktop shortcuts */
 #define M_VD1      LCTL(KC_1)

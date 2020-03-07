@@ -20,8 +20,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MOVE]       = LAYOUT_60_ansi(\
      KC_GRV,     VD_1,     VD_2,     VD_3,     KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
      _______,    WM_VD1,   WM_UH,    WM_VD2,   RESET,    KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  AG_SWAP,   AG_NORM,  KC_INS, \
-     _______,    WM_LH,    WM_MAX,   WM_RH,    OS_POP,   _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,   _______, \
-     _______,    WM_VD3,   WM_BH,    OS_COPY,  OS_PAST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  _______,  _______,   \
+     _______,    WM_LH,    WM_MAX,   WM_RH,    WD_FRWD,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CS_RIGHT, CS_DOWN,   _______, \
+     _______,    WM_VD3,   WM_BH,    OS_COPY,  OS_PAST,  WD_BACK,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  _______,  _______,   \
      _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______),
 
   [_QWERTY_MAC] = LAYOUT_60_ansi(\
@@ -32,10 +32,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_LCTL,    KC_LALT,  KC_LGUI,  KC_SPC,   ADJUST,   KC_RGUI,  KC_LALT,  KC_RCTL),
 
   [_MOVE_MAC]   = LAYOUT_60_ansi(\
-     KC_GRV,     M_VD1,    M_VD2,    M_VD3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
-     _______,    MM_ULCN,  MM_UH,    MM_URCN,  RESET,    KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  IJ_BACK,   IJ_FWD,   KC_INS, \
-     _______,    MM_LH,    MM_MAX,   MM_RH,    MAC_POP,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  _______,  _______,   _______,  \
-     _______,    MM_LLCN,  MM_BH,    MM_LRCN,  _______,  KC_MPRV,  KC_MNXT,  KC_MUTE,  IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   \
+     KC_GRV,     M_VD1,    M_VD2,    M_VD3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   IJ_UP,     IJ_DOWN,   KC_DEL, \
+     _______,    MM_ULCN,  MM_UH,    MM_URCN,  IJ_RUN,   IJ_STEP,  IJ_OUT,   KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  IJ_BACK,   IJ_FWD,   KC_INS, \
+     _______,    MM_LH,    MM_MAX,   MM_RH,    WD_FRWD,  IJ_INTO,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN,   _______,  \
+     _______,    MM_LLCN,  MM_BH,    MM_LRCN,  IJ_STOP,  WD_BACK,  KC_MNXT,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   \
      _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______),
 
   [_ADJUST]     = LAYOUT_60_ansi(\
