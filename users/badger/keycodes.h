@@ -27,9 +27,6 @@
 #define WM_RH      LGUI(KC_RIGHT)
 #define WM_MAX     LGUI(KC_PGUP)
 
-#define CS_RIGHT   LCTL(LSFT(KC_9))
-#define CS_DOWN    LCTL(LSFT(KC_0))
-
 #define CM_RIGHT   LGUI(KC_D)
 #define CM_DOWN    LGUI(LSFT(KC_D))
 
