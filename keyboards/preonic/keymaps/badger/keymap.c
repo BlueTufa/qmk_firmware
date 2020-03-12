@@ -16,6 +16,8 @@ enum CustomKeys {
   KC_MAC1 = SAFE_RANGE,
   KC_MAC2,
   KC_LYRC,
+  CS_RIGHT,
+  CS_DOWN,
 };
 
 bool _capsLockState;
@@ -49,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MOVE]    = LAYOUT_preonic_2x2u(
       KC_ESC,   VD_1,     VD_2,     VD_3,     KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  \
       _______,  WM_VD1,   WM_UH,    WM_VD2,   KC_MAC1,  KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  KC_INS,  \
-      _______,  WM_LH,    WM_MAX,   WM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_SCLN,  KC_QUOT, \
+      _______,  WM_LH,    WM_MAX,   WM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CS_RIGHT, CS_DOWN, \
       _______,  WM_VD3,   WM_BH,    OS_COPY,  OS_PAST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______, \
       _______,  KC_LCTL,  KC_LALT,  KC_LGUI,  _______,            _______,            _______,  _______,  _______,  _______),
 
@@ -98,6 +100,18 @@ void keyboard_post_init_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   dprintf("Key event recorded. KEYCODE: %u , event: %u\n", keycode, record->event.pressed);
   switch (keycode) {
+    case CS_RIGHT:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_TAP(X_B)SS_TAP(X_ENTER)));
+        return false;
+      }
+      break;
+    case CS_DOWN:
+      if (record->event.pressed) {
+        SEND_STRING(SS_LALT(SS_TAP(X_V)SS_TAP(X_ENTER)));
+        return false;
+      }
+      break;
     case KC_CAPS:
       if (record->event.pressed) {
 
@@ -123,7 +137,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_MAC1:
       if (record->event.pressed) {
-        SEND_STRING("open https://www.reddit.com/\n");
+        SEND_STRING("open https://www.reddit.com/r/mechanicalkeyboards\n");
         return false;
       }
       break;
