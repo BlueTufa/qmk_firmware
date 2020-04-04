@@ -30,9 +30,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOVE]    = LAYOUT_66_ansi(\
      KC_ESC,     M_VD1,    M_VD2,    M_VD3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   IJ_UP,     IJ_DOWN,  KC_DEL,   KC_PGUP, \
-     _______,    MM_ULCN,  MM_UH,    MM_URCN,  IJ_RUN,   IJ_STEP,  IJ_OUT,   KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  IJ_BACK,   IJ_FWD,   KC_INS,   KC_PGDN, \
-     _______,    MM_LH,    MM_MAX,   MM_RH,    WD_FRWD,  IJ_INTO,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN,   _______, \
-     _______,    MM_LLCN,  MM_BH,    MM_LRCN,  IJ_STOP,  WD_BACK,  KC_MNXT,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   KC_BRIU, \
+     _______,    IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  IJ_OUT,   KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  IJ_BACK,   IJ_FWD,   KC_INS,   KC_PGDN, \
+     _______,    MM_LH,    MM_MAX,   MM_RH,    WD_FRWD,  MAC_POP,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN,   _______, \
+     _______,    MM_UH,    MM_BH,    MAC_CPY,  MAC_PST,  WD_BACK,  KC_MNXT,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   KC_BRIU, \
      _______,    _______,  _______,  _______,  _______,  _______,  _______,  KC_HOME,  KC_BRID,  KC_END)
 };
 
