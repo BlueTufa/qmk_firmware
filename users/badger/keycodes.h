@@ -3,12 +3,13 @@
 #define _COMMON_KEYCODES_H_
 
 /* these are KDE and/or linux specific */
-#define MOVE       LT(_MOVE, KC_ESC)
+#define MOVE       LT(_MOVE_LINUX, KC_ESC)
 #define MOVE_MAC   LT(_MOVE_MAC, KC_ESC)
 #define ADJUST     MO(_ADJUST)
 
 #define OS_POP     LCTL(KC_F10)
 #define MAC_POP    LCTL(KC_UP)
+#define MAC_FRC    LGUI(LALT(KC_ESC))
 #define OS_COPY    LSFT(LCTL(KC_C))
 #define OS_PAST    LSFT(LCTL(KC_V))
 #define MAC_PST    LGUI(KC_V)
@@ -49,6 +50,8 @@
 #define IJ_INTO    LSFT(KC_F7)
 #define IJ_OUT     LSFT(KC_F8) 
 #define IJ_STOP    LGUI(KC_F2) 
+#define IJ_IMPS    LCTL(LALT(LSFT(KC_EQUAL)))
+#define IJ_IMPH    LCTL(LALT(LSFT(KC_MINUS)))
 
 /* MacOS virtual desktop shortcuts */
 #define M_VD1      LCTL(KC_1)
@@ -65,9 +68,11 @@
 #define MM_RH      HYPR(KC_RBRC)
 #define MM_UH      LALT(LGUI(KC_UP))
 #define MM_BH      LALT(LGUI(KC_DOWN))
+#define MM_LEFT    LCTL(LALT(LGUI(KC_LEFT)))
+#define MM_RGHT    LCTL(LALT(LGUI(KC_RIGHT)))
 
-#define DF_1       DF(_QWERTY)
-#define DF_2       DF(_QWERTY_MAC)
+#define DF_1       DF(_QWERTY_MAC)
+#define DF_2       DF(_QWERTY_LINUX)
 
 /* audio support */
 #define QWERTY_LAYER_SONG H__NOTE(_G6),  H__NOTE(_D6),  Q__NOTE(_A5),   Q__NOTE(_E5), 

@@ -3,10 +3,10 @@
 #include <print.h>
 
 enum Layers {
-  _QWERTY = 0,
-  _MOVE,
-  _QWERTY_MAC,
+  _QWERTY_MAC = 0,
   _MOVE_MAC,
+  _QWERTY_LINUX,
+  _MOVE_LINUX,
   _RAISE,
   _LOWER,
   _ADJUST
@@ -41,20 +41,6 @@ float agSwapSong[][2]                  = SONG(LONG_AG_SWAP);
 float agNormSong[][2]                  = SONG(LONG_AG_NORM);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_QWERTY]   = LAYOUT_preonic_2x2u(
-      KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC, \
-      KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSLS, \
-      MOVE,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,  \
-      KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT, \
-      KC_LCTL,  KC_LGUI,  KC_LALT,  RAISE,    P_ADJ,              KC_SPC,             LOWER,    KC_RALT,  KC_RGUI,  OS_POP),
-
-  [_MOVE]    = LAYOUT_preonic_2x2u(
-      KC_ESC,   VD_1,     VD_2,     VD_3,     KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  \
-      _______,  WM_VD1,   WM_UH,    WM_VD2,   KC_MAC1,  KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  KC_INS,  \
-      _______,  WM_LH,    WM_MAX,   WM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CS_RIGHT, CS_DOWN, \
-      _______,  WM_VD3,   WM_BH,    OS_COPY,  OS_PAST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______, \
-      _______,  KC_LCTL,  KC_LALT,  KC_LGUI,  _______,            _______,            _______,  _______,  _______,  _______),
-
   [_QWERTY_MAC]   = LAYOUT_preonic_2x2u(
       KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC, \
       KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSLS, \
@@ -63,10 +49,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL,  KC_LALT,  KC_LGUI,  RAISE,    P_ADJ,              KC_SPC,             LOWER,    KC_RGUI,  KC_RALT,  MAC_POP),
 
   [_MOVE_MAC]    = LAYOUT_preonic_2x2u(
-      KC_ESC,   M_VD1,    M_VD2,    M_VD3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  \
-      _______,  MM_ULCN,  MM_UH,    MM_URCN,  KC_MAC1,  KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  KC_INS,  \
-      _______,  MM_LH,    MM_MAX,   MM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_SCLN,  KC_QUOT, \
-      _______,  MM_LLCN,  MM_BH,    MM_LRCN,  KC_PAST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  IJ_BACK,  IJ_FWD,   KC_WSCH,  _______, \
+      KC_ESC,   IJ_IMPL,  IJ_DECL,  IJ_REN,   IJ_USAG,  KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  \
+      _______,  IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  KC_INS,  \
+      _______,  MM_LH,    MM_MAX,   MM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN, \
+      _______,  MM_LLCN,  MM_BH,    MAC_CPY,  MAC_PST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  IJ_BACK,  IJ_FWD,   KC_WSCH,  _______, \
+      _______,  KC_LCTL,  KC_LALT,  KC_LGUI,  _______,            _______,            _______,  _______,  _______,  _______),
+
+  [_QWERTY_LINUX]   = LAYOUT_preonic_2x2u(
+      KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC, \
+      KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSLS, \
+      MOVE,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_ENT,  \
+      KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_RSFT, \
+      KC_LCTL,  KC_LGUI,  KC_LALT,  RAISE,    P_ADJ,              KC_SPC,             LOWER,    KC_RALT,  KC_RGUI,  OS_POP),
+
+  [_MOVE_LINUX]    = LAYOUT_preonic_2x2u(
+      KC_ESC,   VD_1,     VD_2,     VD_3,     KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  \
+      _______,  WM_VD1,   WM_UH,    WM_VD2,   KC_MAC1,  KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  KC_INS,  \
+      _______,  WM_LH,    WM_MAX,   WM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CS_RIGHT, CS_DOWN, \
+      _______,  WM_VD3,   WM_BH,    OS_COPY,  OS_PAST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______, \
       _______,  KC_LCTL,  KC_LALT,  KC_LGUI,  _______,            _______,            _______,  _______,  _______,  _______),
 
   [_RAISE]    = LAYOUT_preonic_2x2u(
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void keyboard_post_init_user(void) {
   _capsLockState = false;
-  _currentLayer = _QWERTY;
+  _currentLayer = _QWERTY_MAC;
   layer_on(_currentLayer);
 }
 
@@ -114,7 +114,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case KC_CAPS:
       if (record->event.pressed) {
-
         dprintf("CAPS_LOCK state: %u\n", _capsLockState);
         _capsLockState = !_capsLockState;
         _capsLockState ? PLAY_SONG(capsOnSong) : PLAY_SONG(capsOffSong);
@@ -145,14 +144,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
       dprintf("LYR CYCLE pressed %u, CURRENT_LAYER: %u\n", keycode, _currentLayer);
       // don't turn off the QWERTY layer
-      if (_currentLayer != _QWERTY) {
+      if (_currentLayer != _QWERTY_MAC) {
         layer_off(_currentLayer);
       }
       // don't lock the ADJUST layer
       // since this is accessible via the ADJUST
       // layer, that will require tricky state management
       if (++_currentLayer == _ADJUST) {
-        _currentLayer = _QWERTY;
+        _currentLayer = _QWERTY_MAC;
       }
       layer_on(_currentLayer);
       playSongForLayer(_currentLayer);
@@ -165,10 +164,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void playSongForLayer(int currentLayer) {
   switch (currentLayer) {
-    case   _QWERTY:
+    case   _QWERTY_LINUX:
       PLAY_SONG(defaultLayerSong);
       break;
-    case  _MOVE:
+    case  _MOVE_LINUX:
       PLAY_SONG(moveLayerSong);
       break;
     case  _QWERTY_MAC:
