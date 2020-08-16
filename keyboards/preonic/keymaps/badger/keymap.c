@@ -16,6 +16,7 @@ enum CustomKeys {
   KC_MAC1 = SAFE_RANGE,
   KC_MAC2,
   KC_LYRC,
+  KC_FIRST,
   CS_RIGHT,
   CS_DOWN,
 };
@@ -49,12 +50,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL,  KC_LALT,  KC_LGUI,  RAISE,    P_ADJ,              KC_SPC,             LOWER,    KC_RGUI,  KC_RALT,  MAC_POP),
 
   [_MOVE_MAC]    = LAYOUT_preonic_2x2u(
-      MAC_FRC,  MM_LEFT,  MM_RGHT,  IJ_TOP,   IJ_BOTT,  _______,  _______,  IJ_UP,    IJ_DOWN,  IJ_BACK,  IJ_FWD,   KC_DEL,  \
+      MAC_FRC,  MM_LEFT,  MM_RGHT,  IJ_TOP,   IJ_BOTT,  _______,  _______,  IJ_UP,    IJ_DOWN,  IJ_BACK,  IJ_FWD,   KC_BSPC, \
       KC_BACK,  IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  _______,  WD_BACK,  KC_HOME,  KC_END,   WD_FRWD,  KC_NEXT, \
       _______,  MM_LH,    MM_MAX,   MM_RH,    IJ_FIND,  IJ_IMPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN, \
       _______,  MM_UH,    MM_BH,    MAC_CPY,  MAC_PST,  IJ_IMPH,  _______,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______, \
       _______,  _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______),
-
+ 
   [_QWERTY_LINUX]   = LAYOUT_preonic_2x2u(
       KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC, \
       KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSLS, \
@@ -77,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,  _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______),
 
   [_LOWER]    = LAYOUT_preonic_2x2u(
-      KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  KC_INS,  \
+      KC_GRV,   KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,  KC_CIRC,  KC_AMPR,  KC_ASTR,  KC_LPRN,  KC_RPRN,  KC_BSPC, \
       _______,  KC_7,     KC_8,     KC_9,     KC_PMNS,  KC_VOLD,  KC_VOLU,  KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC,  KC_BSLS, \
       _______,  KC_4,     KC_5,     KC_6,     KC_PPLS,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_SCLN,  KC_QUOT, \
       _______,  KC_1,     KC_2,     KC_3,     KC_PAST,  KC_NO,    KC_NO,    KC_WHOM,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______, \
@@ -87,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_ESC,   AU_ON,    AU_OFF,   CK_TOGG,  CK_UP,    CK_DOWN,  CK_RST,   MU_ON,    MU_OFF,   MU_TOG,   MU_MOD,   KC_DEL,  \
       _______,  NK_ON,    NK_OFF,   EEP_RST,  RESET,    KC_MSTP,  KC_WH_L,  KC_WH_D,  KC_WH_U,  KC_WH_R,  KC_BTN2,  KC_INS,  \
       _______,  GE_SWAP,  GE_NORM,  DEBUG,    AG_SWAP,  AG_NORM,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_BTN1,  _______, \
-      _______,  KC_LYRC,  KC_NO,    KC_CAPS,  KC_NO,    KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_ACL0,  KC_ACL1,  KC_ACL2,  _______, \
+      _______,  KC_LYRC,  KC_FIRST, KC_CAPS,  KC_NO,    KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_ACL0,  KC_ACL1,  KC_ACL2,  _______, \
       _______,  _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______)
 };
 
@@ -140,24 +141,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         return false;
       }
       break;
-    case KC_LYRC:
-    if (record->event.pressed) {
-      dprintf("LYR CYCLE pressed %u, CURRENT_LAYER: %u\n", keycode, _currentLayer);
-      // don't turn off the QWERTY layer
-      if (_currentLayer != _QWERTY_MAC) {
-        layer_off(_currentLayer);
-      }
-      // don't lock the ADJUST layer
-      // since this is accessible via the ADJUST
-      // layer, that will require tricky state management
-      if (++_currentLayer == _ADJUST) {
+    case KC_FIRST:
+      if (record->event.pressed) {
+        // don't turn off the QWERTY layer
+        if (_currentLayer != _QWERTY_MAC) {
+          layer_off(_currentLayer);
+        }
         _currentLayer = _QWERTY_MAC;
+        layer_on(_currentLayer);
+        playSongForLayer(_currentLayer);
+        return false;
       }
-      layer_on(_currentLayer);
-      playSongForLayer(_currentLayer);
-      return false;
-    }
-    break;
+      break;
+    case KC_LYRC:
+      if (record->event.pressed) {
+        dprintf("LYR CYCLE pressed %u, CURRENT_LAYER: %u\n", keycode, _currentLayer);
+        // don't turn off the QWERTY layer
+        if (_currentLayer != _QWERTY_MAC) {
+          layer_off(_currentLayer);
+        }
+        // don't lock the ADJUST layer
+        // since this is accessible via the ADJUST
+        // layer, that will require tricky state management
+        if (++_currentLayer == _ADJUST) {
+          _currentLayer = _QWERTY_MAC;
+        }
+        layer_on(_currentLayer);
+        playSongForLayer(_currentLayer);
+        return false;
+      }
+      break;
   }
   return true;
 }
