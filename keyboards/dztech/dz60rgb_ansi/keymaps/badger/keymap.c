@@ -6,7 +6,8 @@ enum layers {
   _MOVE_MAC,
   _QWERTY_LINUX,
   _MOVE_LINUX,
-  _ADJUST
+  _ADJUST,
+  _CONFIG
 };
 
 enum CustomKeys {
@@ -23,10 +24,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_LCTL,    KC_LALT,  KC_LGUI,  KC_SPC,   ADJUST,   KC_RGUI,  KC_LALT,  KC_RCTL),
 
   [_MOVE_MAC]   = LAYOUT_60_ansi(\
-     MAC_FRC,    MM_LEFT,  MM_RGHT,  KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   IJ_UP,     IJ_DOWN,  KC_DEL, \
-     _______,    IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  IJ_OUT,   WD_BACK,  KC_HOME,  KC_END,   WD_FRWD,  IJ_BACK,   IJ_FWD,   KC_INS, \
-     _______,    MM_LH,    MM_MAX,   MM_RH,    MAC_POP,  IJ_IMPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN,   _______,  \
-     _______,    MM_UH,    MM_BH,    MAC_CPY,  MAC_PST,  IJ_IMPH,  KC_MNXT,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   \
+     MAC_FRC,    MM_LEFT,  MM_RGHT,  IJ_TOP,   IJ_BOTT,  _______,  _______,  _______,  _______,  _______,  _______,  IJ_UP,     IJ_DOWN,  KC_DEL, \
+     KC_BACK,    IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  _______,  WD_BACK,  KC_HOME,  KC_END,   WD_FRWD,  IJ_BACK,   IJ_FWD,   KC_NEXT, \
+     _______,    MM_LH,    MM_MAX,   MM_RH,    IJ_FIND,  IJ_IMPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN,   _______,  \
+     _______,    MM_UH,    MM_BH,    MAC_CPY,  MAC_PST,  IJ_IMPH,  _______,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   \
      _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______),
      
   [_QWERTY_LINUX] = LAYOUT_60_ansi(\
@@ -38,16 +39,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_MOVE_LINUX] = LAYOUT_60_ansi(\
      KC_GRV,     VD_1,     VD_2,     VD_3,     KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
-     _______,    WM_VD1,   WM_UH,    WM_VD2,   RESET,    KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  _______,   _______,  KC_INS, \
+     KC_BACK,    WM_VD1,   WM_UH,    WM_VD2,   RESET,    KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  _______,   _______,  KC_NEXT, \
      _______,    WM_LH,    WM_MAX,   WM_RH,    WD_FRWD,  _______,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CS_RIGHT, CS_DOWN,   _______, \
      _______,    WM_VD3,   WM_BH,    OS_COPY,  OS_PAST,  WD_BACK,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  _______,  _______,   \
      _______,    _______,  _______,  _______,  _______,  _______,  _______,  _______),
 
   [_ADJUST]     = LAYOUT_60_ansi(\
      KC_ESC,    KC_F1,    KC_F2,    KC_F3,    KC_F4,     KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
-     _______,   NK_ON,    NK_OFF,   EEP_RST,  RESET,     KC_MSTP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  RGB_M_B,   RGB_M_R,  KC_INS, \
-     _______,   GE_SWAP,  GE_NORM,  DEBUG,    AG_SWAP,   AG_NORM,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  RGB_MOD,  RGB_TOG,   _______,  \
-     _______,   DF_1,     DF_2,     KC_CAPS,  RGB_M_SW,  KC_MPRV,  KC_MNXT,  KC_MUTE,  RGB_SAI,  RGB_HUI,  RGB_VAI,  _______,   \
+     _______,   _______,  _______,  _______,  KC_WREF,   KC_MSTP,  KC_MPLY,  KC_PGUP,  _______,  _______,  KC_PGDN,  KC_VOLD,   KC_VOLU,  KC_INS, \
+     _______,   _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  \
+     _______,   DF_1,     DF_2,     KC_CAPS,  _______,   KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,   \
+     _______,   _______,  _______,  _______,  _______,   _______,  _______,  MO(_CONFIG)),
+
+  [_CONFIG]     = LAYOUT_60_ansi(\
+     _______,   KC_F1,    KC_F2,    KC_F3,    KC_F4,     KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
+     _______,   NK_ON,    NK_OFF,   EEP_RST,  RESET,     _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  KC_INS, \
+     _______,   GE_SWAP,  GE_NORM,  DEBUG,    RGB_MOD,   RGB_HUI,  RGB_SAI,  RGB_SPI,  RGB_M_B,  _______,  _______,  RGB_TOG,   _______,  \
+     _______,   LAG_SWP,  LAG_NRM,  _______,  RGB_RMOD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  RGB_M_K,  _______,  _______,  _______,   \
      _______,   _______,  _______,  _______,  _______,   _______,  _______,  _______)
 };
 
@@ -71,3 +79,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+  

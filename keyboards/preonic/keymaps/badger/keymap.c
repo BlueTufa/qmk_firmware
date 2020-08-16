@@ -49,11 +49,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_LCTL,  KC_LALT,  KC_LGUI,  RAISE,    P_ADJ,              KC_SPC,             LOWER,    KC_RGUI,  KC_RALT,  MAC_POP),
 
   [_MOVE_MAC]    = LAYOUT_preonic_2x2u(
-      KC_ESC,   IJ_IMPL,  IJ_DECL,  IJ_REN,   IJ_USAG,  KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_DEL,  \
-      _______,  IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  KC_MPLY,  KC_PGUP,  KC_HOME,  KC_END,   KC_PGDN,  KC_INS,  \
-      _______,  MM_LH,    MM_MAX,   MM_RH,    KC_MAC2,  KC_PSCR,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN, \
-      _______,  MM_LLCN,  MM_BH,    MAC_CPY,  MAC_PST,  KC_MPRV,  KC_MNXT,  KC_MUTE,  IJ_BACK,  IJ_FWD,   KC_WSCH,  _______, \
-      _______,  KC_LCTL,  KC_LALT,  KC_LGUI,  _______,            _______,            _______,  _______,  _______,  _______),
+      MAC_FRC,  MM_LEFT,  MM_RGHT,  IJ_TOP,   IJ_BOTT,  _______,  _______,  IJ_UP,    IJ_DOWN,  IJ_BACK,  IJ_FWD,   KC_DEL,  \
+      KC_BACK,  IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  _______,  WD_BACK,  KC_HOME,  KC_END,   WD_FRWD,  KC_NEXT, \
+      _______,  MM_LH,    MM_MAX,   MM_RH,    IJ_FIND,  IJ_IMPS,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN, \
+      _______,  MM_UH,    MM_BH,    MAC_CPY,  MAC_PST,  IJ_IMPH,  _______,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______, \
+      _______,  _______,  _______,  _______,  _______,            _______,            _______,  _______,  _______,  _______),
 
   [_QWERTY_LINUX]   = LAYOUT_preonic_2x2u(
       KC_GRV,   KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC, \

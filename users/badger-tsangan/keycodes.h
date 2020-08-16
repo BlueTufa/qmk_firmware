@@ -54,9 +54,6 @@
 #define IJ_STOP    LGUI(KC_F2) 
 #define IJ_IMPS    LCTL(LALT(LSFT(KC_EQUAL)))
 #define IJ_IMPH    LCTL(LALT(LSFT(KC_MINUS)))
-#define IJ_TOP     LGUI(KC_HOME)
-#define IJ_BOTT    LGUI(KC_END)
-#define IJ_FIND    LGUI(LSFT(KC_F))
 
 /* MacOS virtual desktop shortcuts */
 #define M_VD1      LCTL(KC_1)
