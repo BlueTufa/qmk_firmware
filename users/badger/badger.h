@@ -1,6 +1,7 @@
-#ifndef _COMMON_KEYCODES_H_
 
-#define _COMMON_KEYCODES_H_
+#ifndef _BADGER_H_
+
+#define _BADGER_H_
 
 /* these are KDE and/or linux specific */
 #define MOVE       LT(_MOVE_LINUX, KC_ESC)

@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "keycodes.h"
+#include "badger.h"
 
 enum layers {
   _QWERTY_MAC,

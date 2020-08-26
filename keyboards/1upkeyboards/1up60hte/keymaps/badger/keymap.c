@@ -1,6 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "keycodes.h"
-
+#include "badger.h"
 #define FORCE_NKRO
 
 enum layers {
