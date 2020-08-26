@@ -1,43 +1,6 @@
+#define _BADGER_ORTHO_
+
 #include QMK_KEYBOARD_H
-#include "badger.h"
-#include <print.h>
-
-enum Layers {
-  _QWERTY_MAC = 0,
-  _MOVE_MAC,
-  _RAISE,
-  _LOWER,
-  _ADJUST
-};
-
-enum CustomKeys {
-  KC_MAC1 = SAFE_RANGE,
-  KC_MAC2,
-  KC_LYRC,
-  KC_FIRST,
-  CS_RIGHT,
-  CS_DOWN,
-};
-
-bool      _capsLockState;
-int       _currentLayer;
-const int _layerCount = 7;
-
-#define P_ADJ LT(_ADJUST, KC_BSPC)
-#define RAISE MO(_RAISE)
-#define LOWER MO(_LOWER)
-
-void playSongForLayer(int currentLayer);
-
-float capsOnSong[][2]                  = SONG(CAPS_ON);
-float capsOffSong[][2]                 = SONG(CAPS_OFF);
-float defaultLayerSong[][2]            = SONG(QWERTY_LAYER_SONG);
-float moveLayerSong[][2]               = SONG(MOVE_LAYER_SONG);
-float macLayerSong[][2]                = SONG(MAC_LAYER_SONG);
-float raiseLayerSong[][2]              = SONG(RAISE_LAYER_SONG);
-float lowerLayerSong[][2]              = SONG(LOWER_LAYER_SONG);
-float agSwapSong[][2]                  = SONG(LONG_AG_SWAP);
-float agNormSong[][2]                  = SONG(LONG_AG_NORM);
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY_MAC] = LAYOUT_ortho_4x12(
@@ -71,11 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______)
 };
 
-void keyboard_post_init_user(void) {
-  _capsLockState = false;
-  _currentLayer = _QWERTY_MAC;
-  layer_on(_currentLayer);
-}
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   dprintf("Key event recorded. KEYCODE: %u , event: %u\n", keycode, record->event.pressed);

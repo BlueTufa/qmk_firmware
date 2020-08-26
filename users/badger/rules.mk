@@ -1,2 +1,3 @@
 SRC += badger.c
-USER_NAME := badger
+SRC += badger_audio.c
+SRC += ortho.c

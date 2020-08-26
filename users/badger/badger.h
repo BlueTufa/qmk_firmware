@@ -1,7 +1,22 @@
+#include QMK_KEYBOARD_H
+#include "quantum.h"
 
 #ifndef _BADGER_H_
-
 #define _BADGER_H_
+
+enum layers {
+  _QWERTY_MAC,
+  _MOVE_MAC,
+  _QWERTY_LINUX,
+  _MOVE_LINUX,
+  _ADJUST,
+  _CONFIG
+};
+
+enum CustomKeys {
+  CS_RIGHT = SAFE_RANGE,
+  CS_DOWN
+};
 
 /* these are KDE and/or linux specific */
 #define MOVE       LT(_MOVE_LINUX, KC_ESC)
@@ -39,7 +54,7 @@
 #define WM_VD2     HYPR(KC_2)
 #define WM_VD3     HYPR(KC_3)
 
-/* IntelliJ / JetBrains shortcuts */
+/* IntelliJ / JetBrains shortcuts with Mac keymap */
 #define IJ_BACK    LGUI(LALT(KC_LEFT))
 #define IJ_FWD     LGUI(LALT(KC_RIGHT))
 #define IJ_UP      LGUI(LALT(KC_UP))
@@ -80,19 +95,5 @@
 #define DF_1       DF(_QWERTY_MAC)
 #define DF_2       DF(_QWERTY_LINUX)
 
-/* audio support */
-#define QWERTY_LAYER_SONG H__NOTE(_G6),  H__NOTE(_D6),  Q__NOTE(_A5),   Q__NOTE(_E5), 
-#define MAC_LAYER_SONG    H__NOTE(_E5),  H__NOTE(_A5),  Q__NOTE(_D6),   Q__NOTE(_G6), \
-        ED_NOTE(_E7),     E__NOTE(_CS7), E__NOTE(_E6),  E__NOTE(_A6),   M__NOTE(_CS7, 20),
-#define LONG_AG_SWAP      Q__NOTE(_G5),  Q__NOTE(_D6),  Q__NOTE(_A6),   Q__NOTE(_E7), \
-        SD_NOTE(_B5),     SD_NOTE(_A5),  SD_NOTE(_B5),  SD_NOTE(_A5),
-#define LONG_AG_NORM      Q__NOTE(_DS4), Q__NOTE(_DS4), B__NOTE(_C5),
-#define MOVE_LAYER_SONG   E__NOTE(_GS6), E__NOTE(_A6),  S__NOTE(_REST), ED_NOTE(_E7), \
-        S__NOTE(_REST),   ED_NOTE(_GS7),
-#define RAISE_LAYER_SONG  W__NOTE(_BF5), Q__NOTE(_A5),  W__NOTE(_BF5),  Q__NOTE(_A5),  W__NOTE(_E6), Q__NOTE(_B5),
-#define LOWER_LAYER_SONG  Q__NOTE(_DS4), E__NOTE(_DS4), E__NOTE(_DS6),  Q__NOTE(_DS5), \
-        E__NOTE(_DS5),    E__NOTE(_DS6), Q__NOTE(_E5),  E__NOTE(_E5),   E__NOTE(_DS6), Q__NOTE(_DS5),
-#define CAPS_ON           W__NOTE(_E5),  Q__NOTE(_BF5), W__NOTE(_E5),   Q__NOTE(_BF5), W__NOTE(_E5), Q__NOTE(_BF5),
-#define CAPS_OFF          W__NOTE(_E5),  Q__NOTE(_BF5),
-
 #endif
+
