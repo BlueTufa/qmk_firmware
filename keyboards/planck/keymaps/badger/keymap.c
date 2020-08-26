@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "keycodes.h"
+#include "badger.h"
 #include <print.h>
 
 enum Layers {
@@ -7,8 +7,7 @@ enum Layers {
   _MOVE_MAC,
   _RAISE,
   _LOWER,
-  _ADJUST,
-  _FN
+  _ADJUST
 };
 
 enum CustomKeys {
@@ -27,7 +26,6 @@ const int _layerCount = 7;
 #define P_ADJ LT(_ADJUST, KC_BSPC)
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
-#define FUN   MO(_FN)
 
 void playSongForLayer(int currentLayer);
 
@@ -44,9 +42,9 @@ float agNormSong[][2]                  = SONG(LONG_AG_NORM);
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY_MAC] = LAYOUT_ortho_4x12(
       KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_BSLS, \
-      MOVE_MAC, KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT,  \
-      KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT, \
-      KC_LCTL,  KC_LALT,  KC_LGUI,  RAISE,    P_ADJ,    KC_SPC,   LOWER     FUN,      KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC),
+      MOVE_MAC, KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  KC_QUOT, \
+      KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,  KC_ENT,  \
+      KC_LCTL,  KC_LALT,  KC_LGUI,  RAISE,    P_ADJ,    KC_SPC,   LOWER,    KC_NO,    KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC),
 
   [_MOVE_MAC]   = LAYOUT_ortho_4x12(
       KC_BACK,  IJ_STEP,  IJ_INTO,  IJ_OUT,   IJ_RUN,   IJ_STOP,  _______,  WD_BACK,  KC_HOME,  KC_END,   WD_FRWD,  KC_NEXT, \
@@ -98,16 +96,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         dprintf("CAPS_LOCK state: %u\n", _capsLockState);
         _capsLockState = !_capsLockState;
+#ifdef AUDIO_ENABLE
         _capsLockState ? PLAY_SONG(capsOnSong) : PLAY_SONG(capsOffSong);
+#endif
         return true;
       }
       break;
     case AG_SWAP:
+#ifdef AUDIO_ENABLE
       PLAY_SONG(agSwapSong);
+#endif
       return true;
       break;
     case AG_NORM:
+#ifdef AUDIO_ENABLE
       PLAY_SONG(agNormSong);
+#endif
       return true;
       break;
     case KC_MAC2:
@@ -157,13 +161,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 void playSongForLayer(int currentLayer) {
+#ifdef AUDIO_ENABLE
   switch (currentLayer) {
-    case   _QWERTY_LINUX:
-      PLAY_SONG(defaultLayerSong);
-      break;
-    case  _MOVE_LINUX:
-      PLAY_SONG(moveLayerSong);
-      break;
+//    case   _QWERTY_LINUX:
+//      PLAY_SONG(defaultLayerSong);
+//      break;
+//    case  _MOVE_LINUX:
+//      PLAY_SONG(moveLayerSong);
+//      break;
     case  _QWERTY_MAC:
       PLAY_SONG(macLayerSong);
       break;
@@ -179,4 +184,5 @@ void playSongForLayer(int currentLayer) {
     default:
       break;
   }
+#endif
 }

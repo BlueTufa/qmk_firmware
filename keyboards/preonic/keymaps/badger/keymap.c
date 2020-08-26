@@ -1,3 +1,10 @@
+// if not REV3, just compile the default keymap
+#ifndef REV3_CONFIG_H
+#include "../default/keymap.c"
+#endif
+
+#ifdef REV3_CONFIG_H
+
 #include QMK_KEYBOARD_H
 #include "badger.h"
 #include <print.h>
@@ -199,3 +206,4 @@ void playSongForLayer(int currentLayer) {
       break;
   }
 }
+#endif
