@@ -1,6 +1,10 @@
 #include "ortho.h"
+#include "badger_audio.h"
 
-#ifdef _BADGER_ORTHO_
+#ifndef BADGER_ORTHO_H
+#define BADGER_ORTHO_H
+
+const int _layerCount = 7;
 
 __attribute__ ((weak))
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -22,16 +26,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         dprintf("CAPS_LOCK state: %u\n", _capsLockState);
         _capsLockState = !_capsLockState;
-        _capsLockState ? playSongForEvent(capsOnSong) : playSongForEvent(capsOffSong);
+        _capsLockState ? PLAY_SONG(capsOnSong) : PLAY_SONG(capsOffSong);
         return true;
       }
       break;
     case AG_SWAP:
-      playSongForEvent(agSwapSong);
+      PLAY_SONG(agSwapSong);
       return true;
       break;
     case AG_NORM:
-      playSongForEvent(agNormSong);
+      PLAY_SONG(agNormSong);
       return true;
       break;
     case KC_MAC2:

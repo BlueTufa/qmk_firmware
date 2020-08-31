@@ -1,8 +1,7 @@
 #include QMK_KEYBOARD_H
-#include "quantum.h"
 
-#ifndef _BADGER_H_
-#define _BADGER_H_
+#ifndef BADGER_COMMON_H
+#define BADGER_COMMON_H
 
 enum layers {
   _QWERTY_MAC,

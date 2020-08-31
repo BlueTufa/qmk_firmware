@@ -1,8 +1,6 @@
-#define _BADGER_ORTHO_
-
 #include QMK_KEYBOARD_H
+
 #include "ortho.h"
-#include <print.h>
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY_MAC] = LAYOUT_ortho_4x12(

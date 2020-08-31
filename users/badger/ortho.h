@@ -1,11 +1,8 @@
-#ifdef _BADGER_ORTHO_
 
-#define _BADGER_AUDIO_
+#ifndef BADGER_ORTHO_H
+#define BADGER_ORTHO_H
 
-#include "quantum.h"
 #include "badger.h"
-#include "badger_audio.h"
-#include <print.h>
 
 enum OrthoLayers {
   _RAISE = _CONFIG + 1,
@@ -18,8 +15,6 @@ enum OrthoKeys {
   KC_LYRC,
   KC_FIRST
 };
-
-const int _layerCount = 7;
 
 #define P_ADJ LT(_ADJUST, KC_BSPC)
 #define RAISE MO(_RAISE)
