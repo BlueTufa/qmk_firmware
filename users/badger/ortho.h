@@ -7,18 +7,13 @@
 #include "badger_audio.h"
 #include <print.h>
 
-enum Layers {
-  _QWERTY_MAC = 0,
-  _MOVE_MAC,
-  _QWERTY_LINUX,
-  _MOVE_LINUX,
-  _RAISE,
-  _LOWER,
-  _ADJUST
+enum OrthoLayers {
+  _RAISE = _CONFIG + 1,
+  _LOWER
 };
 
 enum OrthoKeys {
-  KC_MAC1 = NEW_SAFE_RANGE,
+  KC_MAC1 = SAFE_RANGE,
   KC_MAC2,
   KC_LYRC,
   KC_FIRST

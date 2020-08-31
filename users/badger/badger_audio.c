@@ -1,5 +1,6 @@
-#include "badger_audio.h"
 
+#include "badger_audio.h"
+#ifdef _BADGER_AUDIO_
 void playSongForLayer(int currentLayer) {
   #ifdef AUDIO_ENABLE
   switch (currentLayer) {
@@ -32,3 +33,4 @@ void playSongForEvent(float song) {
   PLAY_SONG(song);
   #endif
 }
+#endif

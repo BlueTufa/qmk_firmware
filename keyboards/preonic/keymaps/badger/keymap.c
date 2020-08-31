@@ -6,7 +6,6 @@
 #define _BADGER_ORTHO_
 
 #include QMK_KEYBOARD_H
-#include "badger.h"
 #include "ortho.h"
 #include <print.h>
 
