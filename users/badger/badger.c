@@ -1,7 +1,14 @@
-#ifndef USERSPACE
-#define USERSPACE
 #include "badger.h"
-#endif
+
+bool      _capsLockState;
+int       _currentLayer;
+
+__attribute__ ((weak))
+void keyboard_post_init_user(void) {
+  _capsLockState = false;
+  _currentLayer = _QWERTY_MAC;
+  layer_on(_currentLayer);
+}
 
 __attribute__ ((weak))
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -16,6 +23,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         SEND_STRING(SS_LALT(SS_TAP(X_V)SS_TAP(X_ENTER)));
         return false;
+      }
+      break;
+    case KC_CAPS:
+      if (record->event.pressed) {
+        _capsLockState = !_capsLockState;
+        return true;
       }
       break;
     default:

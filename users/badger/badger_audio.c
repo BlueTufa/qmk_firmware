@@ -1,4 +1,3 @@
-
 #include "badger_audio.h"
 #ifdef _BADGER_AUDIO_
 void playSongForLayer(int currentLayer) {

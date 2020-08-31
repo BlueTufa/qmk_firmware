@@ -19,13 +19,10 @@ enum OrthoKeys {
   KC_FIRST
 };
 
-bool      _capsLockState;
-int       _currentLayer;
 const int _layerCount = 7;
 
 #define P_ADJ LT(_ADJUST, KC_BSPC)
 #define RAISE MO(_RAISE)
 #define LOWER MO(_LOWER)
-
 
 #endif

@@ -1,5 +1,4 @@
 #include "audio.h"
-#include "badger.h"
 #include QMK_KEYBOARD_H
 
 #ifdef _BADGER_AUDIO_

@@ -3,13 +3,6 @@
 #ifdef _BADGER_ORTHO_
 
 __attribute__ ((weak))
-void keyboard_post_init_user(void) {
-  _capsLockState = false;
-  _currentLayer = _QWERTY_MAC;
-  layer_on(_currentLayer);
-}
-
-__attribute__ ((weak))
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   dprintf("Key event recorded. KEYCODE: %u , event: %u\n", keycode, record->event.pressed);
   switch (keycode) {

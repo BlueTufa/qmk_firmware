@@ -1,20 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "badger.h"
 
-enum layers {
-  _QWERTY_MAC,
-  _MOVE_MAC,
-  _QWERTY_LINUX,
-  _MOVE_LINUX,
-  _ADJUST,
-  _CONFIG
-};
-
-enum CustomKeys {
-  CS_RIGHT = SAFE_RANGE,
-  CS_DOWN
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY_MAC] = LAYOUT_60_ansi(\
      KC_GRV,     KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,   KC_BSPC, \
@@ -59,24 +45,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______,   _______,  _______,  _______,  _______,   _______,  _______,  _______)
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case CS_RIGHT:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_B)SS_TAP(X_ENTER)));
-        return false;
-      }
-      break;
-    case CS_DOWN:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_V)SS_TAP(X_ENTER)));
-        return false;
-      }
-      break;
-    default:
-      return true;
-  }
-  return true;
-}
-
-  

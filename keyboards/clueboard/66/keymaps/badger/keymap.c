@@ -1,25 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "badger.h"
 
-enum layers {
-  _QWERTY_LINUX,
-  _MOVE_LINUX,
-  _QWERTY_MAC,
-  _MOVE_MAC,
-  _ADJUST
-};
-
-enum CustomKeys {
-  CS_RIGHT = SAFE_RANGE,
-  CS_DOWN
-};
-
-bool _capsLockState                    = false;
-float capsOnSong[][2]                  = SONG(CAPS_ON);
-float capsOffSong[][2]                 = SONG(CAPS_OFF);
-float agSwapSong[][2]                  = SONG(LONG_AG_SWAP);
-float agNormSong[][2]                  = SONG(LONG_AG_NORM);
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY_LINUX]      = LAYOUT_66_ansi(\
       KC_GRV,    KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_MINS,   KC_EQL,   KC_BSPC,  KC_HOME, \
@@ -57,37 +38,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,   _______,  _______,  _______,  _______,   _______, _______,  KC_HOME,  KC_BRID,  KC_END)
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  dprintf("Key event recorded.  KEYCODE: %u, event: %u\n", keycode, record->event.pressed);
-  switch (keycode) {
-    case AG_SWAP:
-//      PLAY_SONG(agSwapSong);
-      return true;
-      break;
-    case AG_NORM:
-//      PLAY_SONG(agNormSong);
-      return true;
-      break;
-    case KC_CAPS:
-      if (record->event.pressed) {
-        dprintf("CAPS STATE: %u\n", _capsLockState);
-        _capsLockState = !_capsLockState;
-//        _capsLockState ? PLAY_SONG(capsOnSong) : PLAY_SONG(capsOffSong);
-      }
-      return true;
-      break;
-    case CS_RIGHT:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_B)SS_TAP(X_ENTER)));
-        return false;
-      }
-      break;
-    case CS_DOWN:
-      if (record->event.pressed) {
-        SEND_STRING(SS_LALT(SS_TAP(X_V)SS_TAP(X_ENTER)));
-        return false;
-      }
-      break;
-  }
-  return true;
-}
