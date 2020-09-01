@@ -1,7 +1,6 @@
 #include "badger_audio.h"
 
 #ifdef AUDIO_ENABLE
-/* audio support */
 #define QWERTY_LAYER_SONG H__NOTE(_G6),  H__NOTE(_D6),  Q__NOTE(_A5),   Q__NOTE(_E5), 
 #define MAC_LAYER_SONG    H__NOTE(_E5),  H__NOTE(_A5),  Q__NOTE(_D6),   Q__NOTE(_G6), \
         ED_NOTE(_E7),     E__NOTE(_CS7), E__NOTE(_E6),  E__NOTE(_A6),   M__NOTE(_CS7, 20),

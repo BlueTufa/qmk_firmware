@@ -1,4 +1,3 @@
-
 #ifndef BADGER_ORTHO_H
 #define BADGER_ORTHO_H
 
