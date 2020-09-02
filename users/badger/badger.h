@@ -17,11 +17,6 @@ enum CustomKeys {
   CS_DOWN
 };
 
-/* these are KDE and/or linux specific */
-#define MOVE       LT(_MOVE_LINUX, KC_ESC)
-#define MOVE_MAC   LT(_MOVE_MAC, KC_ESC)
-#define ADJUST     MO(_ADJUST)
-
 #define OS_POP     LCTL(KC_F10)
 #define MAC_POP    LCTL(KC_UP)
 #define MAC_FRC    LGUI(LALT(KC_ESC))
@@ -31,6 +26,12 @@ enum CustomKeys {
 #define MAC_CPY    LGUI(KC_C)
 #define KC_BACK    LCTL(LSFT(KC_LBRC))
 #define KC_NEXT    LCTL(LSFT(KC_RBRC))
+
+#define MOVE       LT(_MOVE_LINUX, KC_ESC)
+#define MOVE_MAC   LT(_MOVE_MAC, KC_ESC)
+#define ADJUST     MO(_ADJUST)
+#define CFG_MAC    LT(_CONFIG, MAC_POP)
+#define CFG_LNX    LT(_CONFIG, OS_POP)
 
 #define WD_BACK    LALT(KC_LEFT)
 #define WD_FRWD    LALT(KC_RIGHT)
