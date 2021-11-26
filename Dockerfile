@@ -1,12 +1,10 @@
-<<<<<<< HEAD
 FROM qmkfm/base_container
+FROM qmkfm/qmk_cli
 
 VOLUME /qmk_firmware
 WORKDIR /qmk_firmware
-COPY . .
 
 CMD make all:default
-=======
 # This file uses a multi-stage build strategy. The build stage sets up the nvm environment and builds configurator, while the second stage copies this into a clean container without any build tools.
 
 ## First Stage- Build
@@ -45,4 +43,4 @@ COPY conf/nginx.conf.in /etc/nginx/nginx.conf.in
 COPY bin/docker_run.sh /qmk_configurator/bin/docker_run.sh
 
 CMD /bin/bash -i /qmk_configurator/bin/docker_run.sh
->>>>>>> e822a8fb597d1518748b9c7f5c1f1fb427bc379f
+CMD qmk compile -kb all -km default
