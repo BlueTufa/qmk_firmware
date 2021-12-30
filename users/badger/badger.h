@@ -17,18 +17,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 enum layers {
-  _QWERTY_MAC,
-  _MOVE_MAC,
+  _QWERTY,
+  _MOVE,
   _QWERTY_LINUX,
   _MOVE_LINUX,
-  _ADJUST,
+  _FUNCTION,
+  _MACRO,
   _CONFIG
 };
 
 enum CustomKeys {
   CS_RIGHT = SAFE_RANGE,
   CS_DOWN,
-  SHEBANG
+  SHEBANG,
+  SHRUG,
+  FN,
+  CONST,
+  SELECT,
+  FOR_LOOP,
+  SED,
+  BASH_IF,
+  P_PAREN,
+  P_BRACE,
+  P_BRACK,
+  TS_IMPT,
 };
 
 #define OS_POP     LCTL(KC_F10)
@@ -42,9 +54,11 @@ enum CustomKeys {
 #define KC_NEXT    LGUI(KC_RBRC)
 
 #define MOVE       LT(_MOVE_LINUX, KC_ESC)
-#define MOVE_MAC   LT(_MOVE_MAC, KC_ESC)
-#define ADJUST     MO(_ADJUST)
-#define CFG_MAC    MO(_CONFIG)
+#define MOVE_MAC   LT(_MOVE, KC_ESC)
+#define LT_END     LT(_MACRO, KC_END)
+#define FUNCTION   MO(_FUNCTION)
+#define CONFIG     MO(_CONFIG)
+#define J_MACRO    MO(_MACRO)
 #define CFG_LNX    MO(_CONFIG)
 
 #define WD_BACK    LALT(KC_LEFT)
@@ -125,6 +139,7 @@ enum CustomKeys {
 #define MM_LEFT    LCTL(LALT(LGUI(KC_LEFT)))
 #define MM_RGHT    LCTL(LALT(LGUI(KC_RIGHT)))
 
-#define DF_1       DF(_QWERTY_MAC)
-#define DF_2       DF(_MOVE_MAC)
-#define DF_3       DF(_QWERTY_LINUX)
+#define DF_1       DF(_QWERTY)
+#define DF_2       DF(_MOVE)
+#define DF_3       DF(_FUNCTION)
+#define DF_4       DF(_MACRO)
