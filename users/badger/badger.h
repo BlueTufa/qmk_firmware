@@ -53,24 +53,15 @@ enum CustomKeys {
 #define MAC_PST    LGUI(KC_V)
 #define MAC_SPS    LGUI(LSFT(LALT(KC_V)))
 #define MAC_CPY    LGUI(KC_C)
-#define MAC_DUP    LGUI(KC_D)
-#define MAC_ALL    LGUI(KC_A)
-#define MAC_SAV    LGUI(KC_S)
-#define MAC_B      LGUI(KC_B)
-#define MAC_FND    LGUI(KC_F)
-#define MAC_WND    LGUI(KC_GRV)
 #define KC_BACK    LGUI(KC_LBRC)
 #define KC_NEXT    LGUI(KC_RBRC)
 
 #define MOVE       LT(_MOVE_LINUX, KC_ESC)
 #define MOVE_MAC   LT(_MOVE, KC_ESC)
 #define LT_END     LT(_MACRO, KC_END)
-#define LT_SPACE   LT(_MACRO, KC_SPC)
-#define FN_SPACE   LT(_FUNCTION, KC_SPC)
-#define LT_FUNC    LT(_FUNCTION, KC_LEFT)
+#define FUNCTION   MO(_FUNCTION)
 #define CONFIG     MO(_CONFIG)
 #define J_MACRO    MO(_MACRO)
-#define J_FUNCT    MO(_FUNCTION)
 #define CFG_LNX    MO(_CONFIG)
 
 #define WD_BACK    LALT(KC_LEFT)
@@ -115,13 +106,7 @@ enum CustomKeys {
 #define IJ_TOP     LGUI(KC_HOME)
 #define IJ_BOTT    LGUI(KC_END)
 #define IJ_FIND    LGUI(LSFT(KC_F))
-#define IJ_LINE    LGUI(KC_L)
 #define IJ_RELD    LGUI(LSFT(KC_F9))
-#define IJ_TERM    LALT(KC_F12)
-#define IJ_DEBG    LGUI(KC_5)
-#define IJ_RFMT    LALT(LSFT(LGUI(KC_L)))
-#define IJ_FILE    LSFT(LGUI(KC_O))
-#define IJ_PROJ    LSFT(LGUI(KC_O))
 
 /* VS Code shortcuts */
 #define VS_CMD     LGUI(LSFT(KC_A))
@@ -139,7 +124,6 @@ enum CustomKeys {
 #define VS_LINE    LGUI(KC_L)
 #define VS_MVUP    LSFT(LALT(KC_UP))
 #define VS_MVDN    LSFT(LALT(KC_DOWN))
-#define VS_JSFT    RSFT_T(LGUI(LSFT((KC_P))))
 
 /* MacOS virtual desktop shortcuts */
 #define M_VD1      LCTL(KC_1)
