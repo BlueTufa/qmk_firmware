@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_LCTL,   KC_LALT,  KC_LGUI,  KC_SPC,   FUNCTION, KC_RGUI,  KC_RALT,  J_MACRO),
 
   [_MOVE]       = LAYOUT_60_ansi(\
-     MAC_FRC,   MM_LEFT,  MM_RGHT,  KC_HASH,  KC_DLR,   KC_PERC,  KC_CIRC,  KC_AMPR,  KC_ASTR,  P_PAREN,  P_BRACE,  P_BRACK,   IJ_BOTT,  WD_DELE, \
+     MAC_FRC,   MM_LEFT,  MM_RGHT,  KC_HASH,  KC_DLR,   KC_PERC,  KC_CIRC,  KC_AMPR,  P_BRACE,  P_PAREN,  P_BRACK,  IJ_TOP,    IJ_BOTT,  WD_DELE, \
      KC_BACK,   VS_STEP,  VS_INTO,  VS_OUT,   VS_RUN,   VS_STOP,  VS_MVUP,  WD_BACK,  KC_HOME,  KC_END,   WD_FRWD,  IJ_BACK,   IJ_FWD,   KC_NEXT, \
      _______,   MM_LH,    MM_MAX,   MM_RH,    IJ_FIND,  VS_LINE,  KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  CM_RIGHT, CM_DOWN,   _______,  \
      _______,   MM_UH,    MM_BH,    MAC_CPY,  MAC_PST,  SHEBANG,  VS_MVDN,  IJ_REN,   IJ_IMPL,  IJ_DECL,  IJ_USAG,  _______,   \
@@ -40,7 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______,   KC_F1,    KC_F2,    KC_F3,    KC_F4,     KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
      _______,   _______,  _______,  _______,  SED,       KC_MSTP,  KC_MPLY,  KC_PGUP,  BASH_IF,  _______,  KC_PGDN,  KC_VOLD,   KC_VOLU,  KC_INS, \
      _______,   _______,  SELECT,   _______,  FN,        _______,  _______,  _______,  _______,  FOR_LOOP, _______,  _______,   _______,  \
-     _______,   DF_1,     DF_2,     CONST,    _______,   SHEBANG,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,  \
+     _______,   DF_1,     DF_2,     CONST,    _______,   SHEBANG,  TS_IMPT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,  \
      _______,   _______,  _______,  _______,  _______,   _______,  _______,  _______),
 
   [_CONFIG]     = LAYOUT_60_ansi(\
