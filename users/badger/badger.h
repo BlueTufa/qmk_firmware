@@ -50,6 +50,8 @@ enum CustomKeys {
 #define OS_PAST    LSFT(LCTL(KC_V))
 #define MAC_PST    LGUI(KC_V)
 #define MAC_CPY    LGUI(KC_C)
+#define MAC_CUT    LGUI(KC_X)
+#define MAC_UND    LGUI(KC_Z)
 #define KC_BACK    LGUI(KC_LBRC)
 #define KC_NEXT    LGUI(KC_RBRC)
 

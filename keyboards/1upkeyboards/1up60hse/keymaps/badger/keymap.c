@@ -30,23 +30,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______),
 
   [_FUNCTION]   = LAYOUT_60_ansi(\
-     KC_ESC,    KC_F1,    KC_F2,    KC_F3,    KC_F4,     KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
-     _______,   _______,  _______,  _______,  _______,   VS_TERM,  KC_MPLY,  KC_PGUP,  _______,  _______,  KC_PGDN,  KC_VOLD,   KC_VOLU,  KC_INS, \
-     _______,   VS_EXP,   VS_DBG,   VS_CMD,   VS_FILE,   _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  \
-     _______,   DF_1,     DF_2,     KC_CAPS,  _______,   KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,   \
-     _______,   _______,  _______,  _______,  _______,   _______,  _______,  CONFIG),
+     KC_ESC,    KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
+     _______,   _______,  _______,  _______,  _______,  VS_TERM,  KC_MPLY,  KC_PGUP,  _______,  _______,  KC_PGDN,  KC_VOLD,   KC_VOLU,  KC_INS, \
+     KC_CAPS,   _______,  _______,  VS_DBG,   VS_FILE,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  \
+     _______,   DF_1,     VS_EXP,   VS_CMD,   _______,  KC_MPRV,  KC_MNXT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,   \
+     _______,   _______,  _______,  _______,  _______,  _______,  _______,  CONFIG),
 
   [_MACRO]     = LAYOUT_60_ansi(\
-     _______,   KC_F1,    KC_F2,    KC_F3,    KC_F4,     KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
-     _______,   _______,  _______,  _______,  SED,       KC_MSTP,  KC_MPLY,  KC_PGUP,  BASH_IF,  _______,  KC_PGDN,  KC_VOLD,   KC_VOLU,  KC_INS, \
-     _______,   _______,  SELECT,   _______,  FN,        _______,  _______,  _______,  _______,  FOR_LOOP, _______,  _______,   _______,  \
-     _______,   DF_1,     DF_2,     CONST,    _______,   SHEBANG,  TS_IMPT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,  \
-     _______,   _______,  _______,  _______,  _______,   _______,  _______,  _______),
+     _______,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
+     _______,   _______,  _______,  _______,  SED,      KC_MSTP,  KC_MPLY,  KC_PGUP,  BASH_IF,  _______,  KC_PGDN,  KC_VOLD,   KC_VOLU,  KC_INS, \
+     _______,   _______,  SELECT,   _______,  FN,       _______,  _______,  _______,  _______,  FOR_LOOP, _______,  _______,   _______,  \
+     _______,   DF_1,     DF_2,     CONST,    _______,  SHEBANG,  TS_IMPT,  KC_MUTE,  KC_WBAK,  KC_WFWD,  KC_WSCH,  _______,  \
+     _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______),
 
   [_CONFIG]     = LAYOUT_60_ansi(\
-     _______,   DF_1,     DF_2,     DF_3,     DF_4,      KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
-     _______,   _______,  _______,  EEP_RST,  RESET,     _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  KC_INS, \
-     _______,   _______,  _______,  DEBUG,    RGB_MOD,   RGB_HUI,  RGB_SAI,  RGB_SPI,  RGB_M_B,  _______,  _______,  RGB_TOG,   _______,  \
-     _______,   _______,  _______,  _______,  RGB_RMOD,  RGB_HUD,  RGB_SAD,  RGB_SPD,  RGB_M_K,  _______,  _______,  _______,   \
-     _______,   _______,  _______,  _______,  _______,   _______,  _______,  _______)
+     _______,   DF_1,     DF_2,     DF_3,     DF_4,     KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,    KC_F12,   KC_DEL, \
+     _______,   _______,  _______,  EEP_RST,  RESET,    RGB_TOG,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  KC_INS, \
+     _______,   _______,  _______,  DEBUG,    RGB_MOD,  RGB_HUI,  RGB_SAI,  RGB_SPI,  RGB_M_B,  _______,  _______,  _______,   _______,  \
+     _______,   _______,  _______,  _______,  RGB_RMOD, RGB_HUD,  RGB_SAD,  RGB_SPD,  RGB_M_K,  _______,  _______,  _______,   \
+     _______,   _______,  _______,  _______,  _______,  _______,  _______,  _______)
 };

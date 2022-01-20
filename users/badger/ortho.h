@@ -17,8 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "badger.h"
 
 enum OrthoLayers {
-  _QWERTY_MAC_ORTHO,
-  _MOVE_MAC_ORTHO,
+  _QWERTY_ORTHO,
+  _MOVE_ORTHO,
   _QWERTY_LINUX_ORTHO,
   _MOVE_LINUX_ORTHO,
   _RAISE,
@@ -33,10 +33,10 @@ enum OrthoKeys {
   KC_FIRST
 };
 
-#define RAISE LT(_RAISE, KC_SPACE)
+#define RAISE MO(_RAISE)
 #define LOWER LT(_LOWER, KC_SPACE)
 #define J_FUN MO(_FUNCTION_ORTHO)
-#define MOMAC LT(_MOVE_MAC_ORTHO, KC_ESC)
+#define MOMAC LT(_MOVE_ORTHO, KC_ESC)
 #define MOLNX LT(_MOVE_LINUX_ORTHO, KC_ESC)
 
 void playSongForLayer(int currentLayer);

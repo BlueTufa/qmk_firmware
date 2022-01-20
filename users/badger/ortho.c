@@ -7,7 +7,7 @@ the Free Software Foundation, either version 2 of the License, or
 (at your option) any later version.
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or  FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
@@ -33,7 +33,7 @@ float agNormSong[][2]                  = SONG(LONG_AG_NORM);
 __attribute__ ((weak))
 void keyboard_post_init_user(void) {
   _capsLock = false;
-  _currentLayer = _QWERTY_MAC_ORTHO;
+  _currentLayer = _QWERTY_ORTHO;
   layer_on(_currentLayer);
 }
 
@@ -90,10 +90,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case KC_FIRST:
       if (record->event.pressed) {
         // don't turn off the QWERTY layer
-        if (_currentLayer != _QWERTY_MAC_ORTHO) {
+        if (_currentLayer != _QWERTY_ORTHO) {
           layer_off(_currentLayer);
         }
-        _currentLayer = _QWERTY_MAC_ORTHO;
+        _currentLayer = _QWERTY_ORTHO;
         layer_on(_currentLayer);
         playSongForLayer(_currentLayer);
         return false;
@@ -103,14 +103,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         dprintf("LYR CYCLE pressed %u, CURRENT_LAYER: %u\n", keycode, _currentLayer);
         // don't turn off the QWERTY layer or the ADJUST layer
-        if (_currentLayer != _QWERTY_MAC_ORTHO) {
+        if (_currentLayer != _QWERTY_ORTHO) {
           layer_off(_currentLayer);
         }
         // don't lock the ADJUST layer
         // since this key is accessible via the ADJUST
         // layer, as it will require tricky state management
         if (++_currentLayer == _FUNCTION_ORTHO) {
-          _currentLayer = _QWERTY_MAC_ORTHO;
+          _currentLayer = _QWERTY_ORTHO;
         } else {
           layer_on(_currentLayer);
         }
@@ -132,10 +132,10 @@ void playSongForLayer(int currentLayer) {
     case  _MOVE_LINUX:
       PLAY_SONG(moveLayerSong);
       break;
-    case  _QWERTY_MAC:
+    case  _QWERTY:
       PLAY_SONG(macLayerSong);
       break;
-    case  _MOVE_MAC:
+    case  _MOVE:
       PLAY_SONG(moveLayerSong);
       break;
     case  _RAISE:
