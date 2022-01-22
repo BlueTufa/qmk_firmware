@@ -43,19 +43,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [1] = LAYOUT(
-        _______, KC_MYCM, KC_WHOM, KC_CALC, KC_MSEL, KC_MPRV, KC_MNXT, KC_MPLY, KC_MSTP, KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,          _______,
-        _______, RGB_TOG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
-        _______, _______, RGB_VAI, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, QK_BOOT,            _______,
-        _______, _______, RGB_VAD, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
-        _______,          _______, RGB_HUI, _______, _______, _______, NK_TOGG, _______, _______, _______, _______,          _______, RGB_MOD, _______,
-        _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
+        KC_WFAV, KC_MYCM, KC_WHOM, KC_MAIL, KC_MSEL, KC_WBAK, KC_WFWD, KC_MPLY, KC_MSTP, KC_MPRV, KC_MNXT, KC_FIND, KC_CALC, _______,          KC_WREF,
+        BL_TOGG, KC_F13,  KC_F14,  KC_F15,  KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,  _______,          KC_INS,
+        RGB_TOG, PB_1,    PB_2,    PB_3,    PB_4,    PB_5,    PB_6,    PB_7,    PB_8,    PB_9,    PB_10,   PB_11,   PB_12,   RESET,            KC_PSCR,
+        GUI_ON,  PB_13,   PB_14,   PB_15,   PB_16,   PB_18,   PB_19,   PB_20,   PB_21,   PB_22,   PB_23,   PB_24,            _______,          KC_SCRL,
+        GUI_OFF,          PB_25,   PB_26,   PB_27,   PB_28,   PB_29,   PB_30,   PB_31,   PB_32,   DM_REC1, DM_RSTP,          DM_PLY1, _______, KC_PAUS,
+        KC_WAKE, OSL(2),  KC_LOCK,                            _______,                            KC_UNDO,  KC_TRNS, KC_AGIN, _______, _______, _______
+    ),
+    [2] = LAYOUT(
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_HUI,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, RGB_SAI,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          _______,
+        _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, RGB_VAI, _______,
+        _______, _______, _______,                            _______,                            _______, KC_TRNS, _______, NK_TOGG, RGB_SPI, RGB_MOD
     ),
 };
-// clang-format on
+bool encoder_update_user(uint8_t index, bool clockwise) {
 
-#if defined(ENCODER_MAP_ENABLE)
-const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU) },
-    [1] = { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) }
-};
-#endif
+  if (index == 0) {
+    switch(biton32(layer_state)){
+        case 1:
+            if (clockwise){
+                tap_code16(KC_MS_WH_UP);
+            } else{
+                tap_code16(KC_MS_WH_DOWN);
+            }
+            break;
+        default:
+            if (clockwise) {
+                tap_code16(KC_VOLU);
+            } else {
+                tap_code16(KC_VOLD);
+            }
+            break;
+        }
+    }
+    return true;
+}
+void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+
+if (IS_HOST_LED_ON(USB_LED_CAPS_LOCK)) {
+        RGB_MATRIX_INDICATOR_SET_COLOR(3, 255, 255, 255); //capslock key
+    }
+    if (IS_HOST_LED_ON(USB_LED_SCROLL_LOCK)) {
+        RGB_MATRIX_INDICATOR_SET_COLOR(67, 0, 0, 255); //side led 01
+        RGB_MATRIX_INDICATOR_SET_COLOR(70, 0, 0, 255); //side led 02
+        RGB_MATRIX_INDICATOR_SET_COLOR(73, 0, 0, 255); //side led 03
+        RGB_MATRIX_INDICATOR_SET_COLOR(83, 255, 0, 255); //side led 06
+	    RGB_MATRIX_INDICATOR_SET_COLOR(87, 255, 0, 255); //side led 07
+        RGB_MATRIX_INDICATOR_SET_COLOR(91, 255, 0, 255); //side led 08
+    }
+}
