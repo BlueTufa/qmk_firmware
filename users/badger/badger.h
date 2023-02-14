@@ -53,6 +53,9 @@ enum CustomKeys {
 #define MAC_PST    LGUI(KC_V)
 #define MAC_SPS    LGUI(LSFT(LALT(KC_V)))
 #define MAC_CPY    LGUI(KC_C)
+#define MAC_DUP    LGUI(KC_D)
+#define MAC_ALL    LGUI(KC_A)
+#define MAC_SAV    LGUI(KC_S)
 #define KC_BACK    LGUI(KC_LBRC)
 #define KC_NEXT    LGUI(KC_RBRC)
 
@@ -60,6 +63,7 @@ enum CustomKeys {
 #define MOVE_MAC   LT(_MOVE, KC_ESC)
 #define LT_END     LT(_MACRO, KC_END)
 #define LT_SPACE   LT(_MACRO, KC_SPC)
+#define FN_SPACE   LT(_FUNCTION, KC_SPC)
 #define LT_FUNC    LT(_FUNCTION, KC_LEFT)
 #define CONFIG     MO(_CONFIG)
 #define J_MACRO    MO(_MACRO)
