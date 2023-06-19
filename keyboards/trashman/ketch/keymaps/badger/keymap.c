@@ -24,19 +24,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_MOVE]       = LAYOUT(
         MAC_WND,  IJ_STEP, IJ_INTO, IJ_OUT,  IJ_RUN,  IJ_STOP,  IJ_TOP,  WD_BACK, KC_HOME, KC_END,  WD_FRWD, WD_DELE,
         _______,  MM_LH,   MM_MAX,  MM_RH,   IJ_FIND, IJ_LINE,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_SCLN, KC_QUOT,
-        _______,  MM_LEFT, MM_RGHT, MAC_CPY, MAC_SPS, _______,  IJ_BOTT, IJ_REN,  IJ_BACK, IJ_FWD,  KC_UP,   _______,
+        _______,  MM_LEFT, MM_RGHT, MAC_CPY, MAC_SPS, MAC_B,    IJ_BOTT, IJ_REN,  IJ_BACK, IJ_FWD,  KC_UP,   _______,
         _______,  _______, _______, _______,          _______,           _______, _______, _______
     ),
     [_MACRO]      = LAYOUT(
         KC_GRV,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,     KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
         _______,  MAC_ALL, MAC_SAV, MAC_DUP, MAC_FND, _______,  KC_BSLS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, _______,
-        _______,  MAC_UND, MAC_CUT, MAC_CPY, MAC_PST, MAC_B,    _______, _______, _______, _______, KC_SCLN, _______,
+        _______,  MAC_UND, MAC_CUT, MAC_CPY, MAC_PST, _______,  _______, _______, _______, _______, KC_SCLN, _______,
         _______,  _______, _______, _______,          _______,           _______, _______, _______
     ),
     [_FUNCTION]   = LAYOUT(
         KC_TILD,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,    KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
-        _______,  MAC_ALL, MAC_SAV, MAC_DUP, KC_MINS, KC_COLN,  KC_PIPE, KC_UNDS, KC_PLUS, KC_LCBR, KC_LCBR, KC_DQUO,
-        _______,  MAC_UND, MAC_CUT, MAC_CPY, MAC_PST, MAC_B,    _______, _______, _______, KC_COLN, KC_DQUO, _______,
+        _______,  _______, _______, _______, KC_MINS, KC_COLN,  KC_PIPE, KC_UNDS, KC_PLUS, KC_LCBR, KC_LCBR, KC_DQUO,
+        _______,  _______, _______, _______, _______, _______,  _______, _______, _______, KC_COLN, KC_DQUO, _______,
         _______,  _______, _______, _______,          _______,           _______, _______, CONFIG
     ),
     [_CONFIG]     = LAYOUT(
