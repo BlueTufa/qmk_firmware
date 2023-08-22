@@ -28,7 +28,7 @@ float raiseLayerSong[][2]              = SONG(RAISE_LAYER_SONG);
 float lowerLayerSong[][2]              = SONG(LOWER_LAYER_SONG);
 float agSwapSong[][2]                  = SONG(LONG_AG_SWAP);
 float agNormSong[][2]                  = SONG(LONG_AG_NORM);
-#endif 
+#endif
 
 __attribute__ ((weak))
 void keyboard_post_init_user(void) {
@@ -109,7 +109,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // don't lock the ADJUST layer
         // since this key is accessible via the ADJUST
         // layer, as it will require tricky state management
-        if (++_currentLayer == _ADJUST_ORTHO) {
+        if (++_currentLayer == _FUNCTION_ORTHO) {
           _currentLayer = _QWERTY_MAC_ORTHO;
         } else {
           layer_on(_currentLayer);
@@ -126,16 +126,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 void playSongForLayer(int currentLayer) {
   #ifdef AUDIO_ENABLE
   switch (currentLayer) {
-    case   _QWERTY_LINUX:
+    case   _QWERTY_LINUX_ORTHO:
       PLAY_SONG(defaultLayerSong);
       break;
-    case  _MOVE_LINUX:
+    case  _MOVE_LINUX_ORTHO:
       PLAY_SONG(moveLayerSong);
       break;
-    case  _QWERTY_MAC:
+    case  _QWERTY_MAC_ORTHO:
       PLAY_SONG(macLayerSong);
       break;
-    case  _MOVE_MAC:
+    case  _MOVE_MAC_ORTHO:
       PLAY_SONG(moveLayerSong);
       break;
     case  _RAISE:
@@ -149,3 +149,4 @@ void playSongForLayer(int currentLayer) {
   }
   #endif
 }
+
