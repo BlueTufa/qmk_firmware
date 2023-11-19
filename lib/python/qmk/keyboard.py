@@ -67,6 +67,20 @@ class AllKeyboards:
         return isinstance(other, AllKeyboards)
 
 
+
+class AllKeyboards:
+    """Represents all keyboards.
+    """
+    def __str__(self):
+        return 'all'
+
+    def __repr__(self):
+        return 'all'
+
+    def __eq__(self, other):
+        return isinstance(other, AllKeyboards)
+
+
 base_path = os.path.join(os.getcwd(), "keyboards") + os.path.sep
 
 

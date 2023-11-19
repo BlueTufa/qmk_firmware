@@ -7,6 +7,7 @@ from argcomplete.completers import FilesCompleter
 from milc import cli
 
 import qmk.path
+from qmk.constants import QMK_FIRMWARE
 from qmk.decorators import automagic_keyboard, automagic_keymap
 from qmk.commands import build_environment
 from qmk.keyboard import keyboard_completer, keyboard_folder_or_all, is_all_keyboards
@@ -59,6 +60,9 @@ def compile(cli):
 
     # Handler for the build target
     target = None
+
+    current_keyboard = None
+    current_keymap = None
 
     if cli.args.filename:
         # if we were given a filename, assume we have a json build target

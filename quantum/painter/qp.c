@@ -225,7 +225,7 @@ uint16_t qp_get_offset_y(painter_device_t device) {
 }
 
 void qp_get_geometry(painter_device_t device, uint16_t *width, uint16_t *height, painter_rotation_t *rotation, uint16_t *offset_x, uint16_t *offset_y) {
-    qp_dprintf("qp_geometry: entry\n");
+    qp_dprintf("qp_get_geometry: entry\n");
     painter_driver_t *driver = (painter_driver_t *)device;
 
     if (!driver || !driver->validate_ok) {

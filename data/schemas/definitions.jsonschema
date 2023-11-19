@@ -86,6 +86,10 @@
         "maxLength": 7,
         "pattern": "^[A-Z][A-Zs_0-9]*$"
     },
+    "snake_case": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+    },
     "layout_macro": {
         "oneOf": [
             {

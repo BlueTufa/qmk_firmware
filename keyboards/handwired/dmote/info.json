@@ -26,6 +26,14 @@
             "knight": true
         }
     },
+    "rgblight": {
+        "led_count": 6,
+        "split_count": [3, 3],
+        "animations": {
+            "knight": true,
+            "christmas": true
+        }
+    },
     "ws2812": {
         "pin": "D1"
     },
